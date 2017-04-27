@@ -1,0 +1,131 @@
+#include<bits/stdc++.h>
+#include "ReservationSystem.h"
+using namespace std;
+
+/*
+Name: Solehjon Ruziboev
+*/
+
+int main (){
+    //freopen ("input.txt", "r", stdin);
+    //freopen ("output.txt", "w", stdout);
+
+    ReservationSystem R;
+
+    R.showAllFlights();
+
+    R.addFlight(104, 4, 3);
+    R.addFlight(234, 8, 3);
+    R.addFlight(76, 6, 2);
+
+    R.showAllFlights();
+
+    R.addFlight(104, 8, 6);
+
+    R.showAllFlights();
+
+    R.showFlight(104);
+
+    int rowRes1[4] = {3, 3, 1, 1};
+    char colRes1[4] = {'A', 'B', 'B', 'C'};
+    int code1 = R.makeReservation(104, 4, rowRes1, colRes1);
+
+    if (code1 != -1)
+        cout << "Your reservation code is " << code1 << endl;
+
+    R.showFlight(104);
+
+    int rowRes2[3] = {2, 4};
+    char colRes2[3] = {'A', 'C'};
+
+    int code2 = R.makeReservation(104, 2, rowRes2, colRes2);
+    if (code2 != -1)
+        cout << "Your reservation code is " << code2 << endl;
+
+    R.showFlight(104);
+
+    int rowRes3[2] = {2, 3};
+    char colRes3[2] = {'B', 'A'};
+    int code3 = R.makeReservation(104, 2, rowRes3, colRes3);
+
+    if (code3 != -1)
+        cout << "Your reservation code is " << code3 << endl;
+
+    R.showFlight(104);
+
+    int rowRes4[7] = {1, 2, 2, 3, 4, 3, 1};
+    char colRes4[7] = {'A', 'B', 'C', 'C', 'A', 'B', 'B'};
+    int code4 = R.makeReservation(104, 7, rowRes4, colRes4);
+
+    if (code4 != -1)
+        cout << "Your reservation code is " << code4 << endl;
+
+    R.showFlight(104);
+
+    R.showAllFlights();
+
+    R.showReservation(100);
+
+    R.showReservation(code1);
+
+    R.cancelReservation(300);
+
+    R.cancelReservation(code2);
+
+    R.showFlight(104);
+
+    R.showAllFlights();
+
+    R.cancelFlight(234);
+    R.showFlight(234);
+
+    R.showAllFlights();
+
+    R.cancelFlight(674);
+
+    R.showAllFlights();
+
+    R.cancelFlight(104);
+
+    R.showReservation(code1);
+    R.cancelFlight(76);
+
+    R.showAllFlights();
+
+    printf ("------END OF FIRST GROUP-TEST------\n\n");
+
+    R.cancelFlight(123);
+    R.cancelReservation(123);
+    R.showFlight(123);
+
+    printf ("------END OF SECOND GROUP-TEST------\n\n");
+
+    for (int i = 0; i < 10; i++){
+        R.addFlight(i+1, 10, 10);
+    }
+
+    R.showAllFlights();
+
+    int r[10];
+    char c[10];
+    for (int i = 0; i < 10; i++){
+        r[i] = i+1;
+        c[i] = 'A' + i;
+    }
+
+    int code = R.makeReservation(10, 10, r, c);
+    printf ("Your reservation code is : %d\n", code);
+
+    R.showFlight(10);
+
+    int rows[5] = {3, 5, 2, 10, 8};
+    char columns[5] = {'A', 'J', 'E', 'H', 'I'};
+
+    int codecur = R.makeReservation(10, 5, rows, columns);
+    printf ("Your reservation code is : %d\n", codecur);
+
+    R.showFlight(10);
+
+return 0;
+}
+
